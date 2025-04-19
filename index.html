@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 </head>
 
-<body class="">
+<body>
   <header>
     <div class="container">
       <div class="flex">
@@ -35,17 +35,15 @@
             <i id="camera-icon" class="fa-solid fa-camera"></i>
           </label>
           <input type="file" id="camera-input" accept="image/*" style="display:none;" />
-          <button class="darkMode-btn" id="modeToggleBtn">
-            <i class="fa-solid fa-moon" id="modeIcon"></i>
-          </button>
+          <button class="edit-btn"><i id="edit-icon" class="fa-solid fa-pen-to-square"></i></button>
         </div>
       </div>
       <div class="search-inp">
         <i class="fa-solid fa-magnifying-glass"></i>
         <input class="input-search" type="search" placeholder="search">
       </div>
-
-    </div>
+      
+      </div>
     </div>
   </header>
 
@@ -54,36 +52,38 @@
     <!-- contact-uchun-container -->
 
     <div class="container contacts-container">
+      <!-- Test uchun contacktlar -->
+      
 
     </div>
-
-
-
+  
+    
+   
   </main>
 
 
   <footer>
     <div class="nav">
 
-      <button class="nav-icon active" id="Chats" onclick=" setActive('chat') "><i
-          class="fa-solid fa-comment"></i></button>
-      <button class="nav-icon" id="Contacts" onclick="setActive('contact')"><i
-          class="fa-solid fa-user-group"></i></button>
-      <button class="nav-icon" id="Browser" onclick="setActive('browser')"><i
-          class="fa-solid fa-compass"></i></i></button>
+      <button class="nav-icon active" id="Chats" onclick=" setActive('chat') " ><i class="fa-solid fa-comment"></i></button>
+      <button class="nav-icon" id="Contacts" onclick="setActive('contact')"><i class="fa-solid fa-user-group"></i></button>
+      <button class="nav-icon" id="Browser" onclick="setActive('browser')"><i class="fa-solid fa-compass"></i></i></button>
     </div>
 
   </footer>
-  <div id="loading" class="loading-container">
-    <div class="loading-spinner"></div>
-  </div>
+<!-- Loading animatsiyasi uchun kontainer -->
+<div id="loading" class="loading-container">
+  <div class="loading-spinner"></div>
+</div>
 
-  <div class="content">
-  </div>
+<!-- Boshqa sahifa mazmuni -->
+<div class="content">
+  <!-- Sahifa mazmuni bu yerda bo'ladi -->
+</div>
 
   <script src="./index.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="./contacts.js"></script>
+<script src="./contacts.js"></script>
   <script>
     var swiper = new Swiper(".mySwiper", {
       slidesPerView: 1,
@@ -96,21 +96,21 @@
       },
     });
   </script>
-  <script>
-    var swiper = new Swiper(".myContactSwiper", {
-      initialSlide: 1,
-      slidesPerView: 1,
-      centeredSlides: true,
-      spaceBetween: -450,
-      threshold: 200,
-    });
+<script>
+  var swiper = new Swiper(".myContactSwiper", {
+    initialSlide: 1,       
+    slidesPerView: 1,        
+    centeredSlides: true,   
+    spaceBetween:-450,     
+    threshold: 200,
+  });
 
-    const contactSwiper = document.querySelector(".myContactSwiper ");
-
-
+  const contactSwiper = document.querySelector(".myContactSwiper ");
 
 
-  </script>
+
+  
+</script>
 
 </body>
 

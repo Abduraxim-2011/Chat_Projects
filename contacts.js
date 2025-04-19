@@ -44,11 +44,12 @@ function render(contactList = contacts) {
               <button class="contact-btn" onclick="location.href='chat.html'">
                 <img src="${e.image}" alt="Contact.ava" class="contact-ava">
               </button>
-              <button class="on-btn"></button>
-              <div class="contact-info">
-                <h1 class="contact-name">${e.firstName} ${e.lastName}</h1>
-                <p class="contact-online-time">Oxirgi Marta 9:40da onlayn edi</p>
-              </div>
+              <button class="contact-btn" onclick="location.href='chat.html'">
+                <div class="flex-contact">
+                  <h1 class="contact-name" id="title">${e.firstName} ${e.lastName} <br><br></h1>
+                  <p class="contact-online-time"><br> Oxirgi Marta 9:40da onlayn edi</p>
+                </div>
+              </button>
             </div>
           </div>
           <div class="swiper-slide delete-contact">
@@ -61,7 +62,7 @@ function render(contactList = contacts) {
       <div id="overlay${e.id}" class="overlay">
         <div class="dialogBox">
           <h1>Bu chat butunlay oʻchirilsinmi?</h1>
-          <p class="DialogSorov">Bu nafaqat oxirgi xabarlarni emas, <span>"${e.firstName} ${e.lastName}" bilan barcha yozishmalaringiz o'chib ketadi!</span></p>
+          <p class="DialogSorov">Bu nafaqat oxirgi xabarlarni emas, <span><br>"${e.firstName} ${e.lastName}"<br></span> bilan barcha yozishmalaringiz o'chib ketadi!</p>
           <div class="buttons">
             <button onclick="closeDialog(${e.id})" class="cancel">Ortga</button>
             <button onclick="deleteContact(${e.id})" class="delete">O'chirilsin</button>
