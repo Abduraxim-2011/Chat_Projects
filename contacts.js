@@ -43,7 +43,10 @@ function render(contactList = contacts) {
             <div class="flex-contact">
               <button class="contact-btn" onclick="location.href='chat.html'">
                 <img src="${e.image}" alt="Contact.ava" class="contact-ava">
+<div class="on-btn"></div>
+
               </button>
+
               <button class="contact-btn" onclick="location.href='chat.html'">
                 <div class="flex-contact">
                   <h1 class="contact-name" id="title">${e.firstName} ${e.lastName} <br><br></h1>
@@ -103,7 +106,7 @@ function reinitAllSwipers() {
       slidesPerView: 1,
       centeredSlides: true,
       spaceBetween: -450,
-      threshold: 200,
+      threshold: 100,
     });
 
     swiperEl.swiper = swiper;
