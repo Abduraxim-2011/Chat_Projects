@@ -65,4 +65,31 @@ window.addEventListener('load', function() {
       content.style.display = 'block';
     }, 1000);
   });
+  const modeBtn = document.getElementById('modeToggleBtn');
+  const modeIcon = document.getElementById('modeIcon');
+  
+  function setMode(mode) {
+    if (mode === 'dark') {
+      document.body.classList.add('dark');
+      modeIcon.classList.remove('fa-moon');
+      modeIcon.classList.add('fa-sun');
+    } else {
+      document.body.classList.remove('dark');
+      modeIcon.classList.remove('fa-sun');
+      modeIcon.classList.add('fa-moon');
+    }
+    localStorage.setItem('mode', mode);
+  }
+  
+  modeBtn.addEventListener('click', () => {
+    const isDark = document.body.classList.contains('dark');
+    setMode(isDark ? 'light' : 'dark');
+  });
+  
+  window.addEventListener('DOMContentLoaded', () => {
+    const savedMode = localStorage.getItem('mode') || 'light';
+    setMode(savedMode);
+  });
+  
+    
   
