@@ -47,12 +47,16 @@ function render(contactList = contacts) {
 
               </button>
 
-              <button class="contact-btn" onclick="location.href='chat.html'">
+              <button class="contact-btn" onclick="location.href='./chat.html'">
                 <div class="flex-contact">
                   <h1 class="contact-name" id="title">${e.firstName} ${e.lastName} <br><br></h1>
                   
-                  <p class="contact-online-time"><br> Oxirgi Marta 9:40da onlayn edi</p>
-                
+                  <p style="display: none;" class="contact-online-time"><br> Oxirgi Marta 9:40da onlayn edi</p>
+                  <p  class="contact-online-time"> <br> Yaqinda onlayn edi</p>
+  <p style="display: none;" class="contact-online-time"> <br>Kecha onlayn edi</p>
+  <p style="display: none;" class="contact-online-time"> <br>Bir  hafta oldin onlayn edi</p>
+  <p style="display: none;" class="contact-online-time"> <br> Bir oy oldin onlayn edi</p>
+  <p style="display: none;" class="contact-online-time"> <br>uzoq vaqt kirmagan</p>
                 </div>
               </button>
             </div>
@@ -159,4 +163,10 @@ searchInput.addEventListener('input', () => {
   });
 
   noResults.style.display = found ? 'none' : 'block';
+});
+window.addEventListener('DOMContentLoaded', () => {
+  const savedMode = localStorage.getItem('darkMode');
+  if (savedMode === 'on') {
+    document.body.classList.add('dark');
+  }
 });

@@ -57,6 +57,19 @@ const browserBtn = document.querySelector('#Browser')
         window.location.href = "browser.html"
     }
 }
+function toggleDarkMode() {
+  document.body.classList.toggle('dark');
+  const isDark = document.body.classList.contains('dark');
+  localStorage.setItem('darkMode', isDark ? 'on' : 'off');
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  const savedMode = localStorage.getItem('darkMode');
+  if (savedMode === 'on') {
+    document.body.classList.add('dark');
+  }
+});
+
 
 
 
