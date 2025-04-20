@@ -57,39 +57,86 @@ const browserBtn = document.querySelector('#Browser')
         window.location.href = "browser.html"
     }
 }
+
+
+
+
+
 window.addEventListener('load', function() {
     setTimeout(function() {
       const loading = document.getElementById('loading');
       const content = document.getElementById('content');
       loading.style.display = 'none';
-      content.style.display = 'block';
     }, 1000);
   });
-  const modeBtn = document.getElementById('modeToggleBtn');
-  const modeIcon = document.getElementById('modeIcon');
   
+
+
+
   function setMode(mode) {
+  
     if (mode === 'dark') {
+   
       document.body.classList.add('dark');
-      modeIcon.classList.remove('fa-moon');
-      modeIcon.classList.add('fa-sun');
+      modeIcon?.classList.remove('fa-moon');
+      modeIcon?.classList.add('fa-sun');
     } else {
       document.body.classList.remove('dark');
-      modeIcon.classList.remove('fa-sun');
-      modeIcon.classList.add('fa-moon');
+      modeIcon?.classList.remove('fa-sun');
+      modeIcon?.classList.add('fa-moon');
     }
     localStorage.setItem('mode', mode);
+    
   }
-  
-  modeBtn.addEventListener('click', () => {
+
+  const modeBtn = document.getElementById('modeToggleBtn');
+  const modeIcon = document.getElementById('modeIcon');
+
+  modeBtn?.addEventListener('click', () => {
     const isDark = document.body.classList.contains('dark');
     setMode(isDark ? 'light' : 'dark');
   });
-  
+
   window.addEventListener('DOMContentLoaded', () => {
     const savedMode = localStorage.getItem('mode') || 'light';
     setMode(savedMode);
   });
+
+
+
+
+  const input = document.querySelector('.input-search');
+
+  const placeholders = ["Qidiruv...", "Поиск...", "Search..."];
+  let currentIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
   
-    
+  function typePlaceholder() {
+    const currentText = placeholders[currentIndex];
+    const visibleText = currentText.slice(0, charIndex);
+  
+    if (input.value === "") {
+      input.setAttribute("placeholder", visibleText);
+    }
+  
+    if (!isDeleting && charIndex < currentText.length) {
+      charIndex++;
+    } else if (isDeleting && charIndex > 0) {
+      charIndex--;
+    } else {
+      if (!isDeleting) {
+        isDeleting = true;
+        setTimeout(typePlaceholder, 1500); 
+        return;
+      } else {
+        isDeleting = false;
+        currentIndex = (currentIndex + 1) % placeholders.length;
+      }
+    }
+  
+    setTimeout(typePlaceholder, isDeleting ? 100 : 150);
+  }
+  
+  typePlaceholder();
   

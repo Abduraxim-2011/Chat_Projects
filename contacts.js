@@ -20,13 +20,13 @@ let contacts = JSON.parse(localStorage.getItem("contacts")) || [
   { id: 19, firstName: "Jova", lastName: "Pulatov", image: "./img/fakeava.svg" },
   { id: 20, firstName: "Abu", lastName: "Mansurov", image: "./img/fakeava.svg" }
 ];
+console.log(contacts);
 
 const container = document.querySelector(".contacts-container");
 const searchInput = document.querySelector(".input-search");
 
 function render(contactList = contacts) {
   container.innerHTML = "";
-
   contactList.forEach(e => {
     container.innerHTML += `
       <div class="swiper myContactSwiper">
@@ -50,7 +50,9 @@ function render(contactList = contacts) {
               <button class="contact-btn" onclick="location.href='chat.html'">
                 <div class="flex-contact">
                   <h1 class="contact-name" id="title">${e.firstName} ${e.lastName} <br><br></h1>
+                  
                   <p class="contact-online-time"><br> Oxirgi Marta 9:40da onlayn edi</p>
+                
                 </div>
               </button>
             </div>
@@ -139,3 +141,22 @@ searchInput.addEventListener("keydown", function (e) {
 
 render();
 
+const searchInp = document.getElementById('search');
+const contactNotFound = document.querySelectorAll('.contacts-container');
+const noResults = document.getElementById('not-found');
+
+searchInput.addEventListener('input', () => {
+  const searchText = searchInput.value.toLowerCase();
+  let found = false;
+
+  contactNotFound.forEach(contact => {
+    if (contact.textContent.toLowerCase().includes(searchText)) {
+      contact.style.display = 'list-item';
+      found = true;
+    } else {
+      contact.style.display = 'none';
+    }
+  });
+
+  noResults.style.display = found ? 'none' : 'block';
+});
