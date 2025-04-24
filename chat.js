@@ -8,16 +8,16 @@ function sendMessage() {
     msgDiv.innerText = msg;
     chat.appendChild(msgDiv);
     chat.scrollTop = chat.scrollHeight;
-    let messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+    let messages = JSON.parse(localStorage.getItem("ChatMsg")) || [];
     messages.push({ text: msg, from: "user" });
-    localStorage.setItem("chatMessages", JSON.stringify(messages));
+    localStorage.setItem("ChatMsg", JSON.stringify(messages));
     input.value = "";
   }
 }
 
 function loadMessages() {
   const chat = document.getElementById("chat");
-  const messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+  const messages = JSON.parse(localStorage.getItem("ChatMsg")) || [];
   messages.forEach(msg => {
     const msgDiv = document.createElement("div");
     msgDiv.className = `message from-${msg.from}`;
@@ -51,31 +51,28 @@ window.addEventListener('load', function() {
     }
   
 });
-function setActive(btn) {
-  const chatsBtn = document.querySelector('#Chats')
-const contactsBtn = document.querySelector('#Contacts')
-const browserBtn = document.querySelector('#Browser')
-  if (btn === 'chat') {
-      chatsBtn.classList.add('active')
-      contactsBtn.classList.remove('active')
-      browserBtn.classList.remove('active')
-      window.location.href = "index.html"
-  } else if (btn === 'contact') {
-      chatsBtn.classList.remove('active')
-      contactsBtn.classList.add('active')
-      browserBtn.classList.remove('active')
-      window.location.href = "contacts.html"
-  } else if (btn === 'browser') {
-      chatsBtn.classList.remove('active')
-      contactsBtn.classList.remove('active')
-      browserBtn.classList.add('active')
-      window.location.href = "browser.html"
-  }
-}
-window.addEventListener('DOMContentLoaded', () => {
-  const savedMode = localStorage.getItem('darkMode');
-  if (savedMode === 'on') {
-    document.body.classList.add('dark');
+
+
+
+window.addEventListener("DOMContentLoaded", () => {
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      loading.style.display = 'none';
+    }, 1000);
+  });
+  const darkMode = localStorage.getItem("dark") === "true";
+  if (darkMode) {
+
+    document.body.classList.add("dark");
   }
 });
+
+const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+if (prefersDarkMode) {
+  document.body.classList.add('dark');
+} else {
+  document.body.classList.add('light');
+}
+
 

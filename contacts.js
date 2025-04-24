@@ -164,9 +164,11 @@ searchInput.addEventListener('input', () => {
 
   noResults.style.display = found ? 'none' : 'block';
 });
-window.addEventListener('DOMContentLoaded', () => {
-  const savedMode = localStorage.getItem('darkMode');
-  if (savedMode === 'on') {
-    document.body.classList.add('dark');
+
+
+window.addEventListener("DOMContentLoaded", () => {
+  const darkMode = localStorage.getItem("darkMode") === "true";
+  if (darkMode) {
+    document.body.classList.add("dark");
   }
 });

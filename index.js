@@ -86,34 +86,13 @@ window.addEventListener('load', function() {
 
 
 
-  function setMode(mode) {
-  
-    if (mode === 'dark') {
-   
-      document.body.classList.add('dark');
-      modeIcon?.classList.remove('fa-moon');
-      modeIcon?.classList.add('fa-sun');
-    } else {
-      document.body.classList.remove('dark');
-      modeIcon?.classList.remove('fa-sun');
-      modeIcon?.classList.add('fa-moon');
-    }
-    localStorage.setItem('mode', mode);
-    
-  }
+const darkToggle = document.getElementById("darkToggle");
 
-  const modeBtn = document.getElementById('modeToggleBtn');
-  const modeIcon = document.getElementById('modeIcon');
+darkToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  localStorage.setItem("darkMode", document.body.classList.contains("dark"));
+});
 
-  modeBtn?.addEventListener('click', () => {
-    const isDark = document.body.classList.contains('dark');
-    setMode(isDark ? 'light' : 'dark');
-  });
-
-  window.addEventListener('DOMContentLoaded', () => {
-    const savedMode = localStorage.getItem('mode') || 'light';
-    setMode(savedMode);
-  });
 
 
 
@@ -152,4 +131,17 @@ window.addEventListener('load', function() {
   }
   
   typePlaceholder();
+  
+
+
+
+
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const darkMode = localStorage.getItem("darkMode") === "true";
+    if(darkMode){
+      document.body.classList.add("dark")
+    }
+  } )
+
   
